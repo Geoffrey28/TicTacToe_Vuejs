@@ -23,6 +23,7 @@ export default {
     border-radius: 20%;
     &--button {
         width: 60%;
+        cursor: pointer;
         font-size: 1.2em;
         line-height: 50px;
         height: 50px;

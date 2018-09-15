@@ -1,6 +1,9 @@
 <template>
   <div class="game">
       <div class="game--player">
+        <div class="game--home">
+          <router-link to="/">Go Back</router-link>
+        </div>
         <div class="game--player--item">
           <p>Player 1</p>
           <p class="score">{{ this.score.one }}</p>
@@ -64,12 +67,28 @@ export default {
     &--item {
       color: rgb(80, 220, 140);
       font-size: 1.5em;
-      .score {
+      p {
         text-align: center;
       }
     }
   }
+  &--home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -20vh 10vw 20vh 0;
+    &:hover {
+      a {
+        text-shadow: 2px 2px 5px rgb(80, 220, 140);
+      }
+    }
+    a {
+      text-decoration: none;
+      color: rgb(80, 220, 140);
+    }
+  }
   .reset {
+    margin: 10vh auto 0;
     width: 150px;
     height: 40px;
     border: 1px solid rgb(80, 220, 140);

@@ -87,7 +87,8 @@ export default {
         border-left: 1px solid rgb(80, 220, 140);
         list-style: none;
         &:hover {
-            background: rgba(150, 150, 150, .1)
+            background: rgba(80, 220, 140, .2);
+            cursor: pointer;
         }
     }
     & li:nth-child(1), li:nth-child(7), li:nth-child(4) {
