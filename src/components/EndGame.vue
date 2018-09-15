@@ -1,16 +1,17 @@
 <template>
     <div class="endgame">
         <p>Winner is</p>
-        <p>{{ this.winner }}</p>
+        <p>{{ winner }}</p>
     </div>
 </template>
 
 <script>
 export default {
     name: 'EndGame',
+    props: ['winner'],
     data () {
         return {
-            winner: 'null'
+            
         }
     }
 }

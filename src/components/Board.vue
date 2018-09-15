@@ -18,12 +18,11 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'Board',
+    props: ['win', 'score'],
     data () {
         return {
             started: false,
             turn: 1,
-            one: this.two,
-            two: this.one,
             winner: null
         }
     },
@@ -102,6 +101,7 @@ export default {
         font-size: 3em;
         font-weight: 300;
         color: rgb(80, 220, 140);
+        animation: ta 500ms cubic-bezier(.61,1.17,.82,.95);
     }
 }
 
@@ -110,6 +110,13 @@ export default {
         height: 0;
         width: 0;
         opacity: 0
+    }
+}
+
+@keyframes ta {
+    0% {
+        opacity: 0;
+        font-size: 0;
     }
 }
 </style>

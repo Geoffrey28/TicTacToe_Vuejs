@@ -12,11 +12,11 @@
           <p>Player 2</p>
           <p class="score">{{ this.score.two }}</p>
         </div>
-        <div class="reset">
+        <div class="reset" v-show="this.win">
           <router-link to="/game">Reset</router-link>
         </div>
       </div>
-      <router-view v-on:win="getScore()"></router-view>
+      <router-view v-on:win="getScore"></router-view>
   </div>
 </template>
 
@@ -33,16 +33,19 @@ export default {
         one: 0,
         two: 0
       },
-      win: false
+      win: false,
+      winner: ''
     }
   },
   methods: {
-    getScore () {
-      if ('cross' == 'cross') {
+    getScore (winner) {
+      if (winner == 'cross') {
         this.score.one++
+        this.winner = winner
       }
-      if (null == 'circle') {
+      if (winner == 'circle') {
         this.score.two++
+        this.winner = winner
       }
       this.$router.push('/end')
       this.win = true
