@@ -1,4 +1,4 @@
-# random_project
+# Tic.Tac.Toe V1
 
 ## Project setup
 ```
