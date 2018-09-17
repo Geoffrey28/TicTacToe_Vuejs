@@ -91,6 +91,8 @@ export default {
     width: 500px;
     height: 500px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     animation: ca 3s cubic-bezier(.61,1.17,.82,.95);
     & li {
@@ -117,20 +119,55 @@ export default {
         color: rgb(80, 220, 140);
         animation: ta 500ms cubic-bezier(.61,1.17,.82,.95);
     }
+    .wtfmode {
+      width: 26%;
+      height: 26%;
+      border: none;
+      background: rgb(80, 220, 140);
+      animation: wtf_anim 2s alternate infinite
+    }
 }
 
 @keyframes ca {
-    0% {
-        height: 0;
-        width: 0;
-        opacity: 0
-    }
+  0% {
+      height: 0;
+      width: 0;
+      opacity: 0
+  }
 }
 
 @keyframes ta {
-    0% {
-        opacity: 0;
-        font-size: 0;
-    }
+  0% {
+      opacity: 0;
+      font-size: 0;
+  }
+}
+
+@keyframes wtf_anim {
+  0% {
+    border-radius: 0 0 0 0;
+    background: rgba(80, 220, 140, 1);
+    transform: rotate(0deg)
+  }
+  25% {
+    border-radius: 50% 0 0 0;
+    background: rgba(80, 220, 140, .7);
+    transform: rotate(90deg)
+  }
+  50% {
+    border-radius: 50% 50% 0 0;
+    background: rgba(80, 220, 140, .4);
+    transform: rotate(180deg)
+  }
+  75% {
+    border-radius: 50% 50% 50% 0;
+    background: rgba(80, 220, 140, .7);
+    transform: rotate(270deg)
+  }
+  100% {
+    border-radius: 50%;
+    background: rgba(80, 220, 140, 1);
+    transform: rotate(360deg)
+  }
 }
 </style>

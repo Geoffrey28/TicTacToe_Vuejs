@@ -12,11 +12,11 @@
           <p>Player 2 [O]</p>
           <p class="score">{{ this.score.two }}</p>
         </div>
-        <div class="reset" @click="resetBoard()">
+        <div class="reset" @click="resetBoard">
           <router-link to="/game">Reset</router-link>
         </div>
         <div class="wtf" v-show="this.winner === ''">
-          <p>???</p>
+          <p @click="wtfMode">W T F</p>
         </div>
       </div>
       <router-view v-on:win="getScore" :mode="mode" :winner="winner"></router-view>
@@ -39,7 +39,8 @@ export default {
         one: 0,
         two: 0
       },
-      winner: ''
+      winner: '',
+      wtf_state: false
     }
   },
   methods: {
@@ -59,6 +60,23 @@ export default {
       for (let i = 0; i < c.length; i++) {
         c[i].classList = ''
         this.winner = ''
+        this.wtf_state = false
+      }
+    },
+    wtfMode () {
+      const c = document.querySelectorAll('.board li')
+      for (let i = 0; i < c.length; i++) {
+        c[i].classList = ''
+        if (this.wtf_state === false) {
+          c[i].classList.add('wtfmode')
+          if (i === c.length-1) {
+            this.wtf_state = true
+          }
+        } else {
+          if (i === c.length-1) {
+            this.wtf_state = false
+          }
+        }
       }
     }
   }
