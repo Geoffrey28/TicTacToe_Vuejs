@@ -12,7 +12,7 @@
           <p>Player 2 [O]</p>
           <p class="score">{{ this.score.two }}</p>
         </div>
-        <div class="reset">
+        <div class="reset" @click="resetBoard()">
           <router-link to="/game">Reset</router-link>
         </div>
       </div>
@@ -50,6 +50,12 @@ export default {
         this.winner = winner
       }
       this.$router.push('/end')
+    },
+    resetBoard () {
+      const c = document.querySelectorAll('.board li')
+      for (let i = 0; i < c.length; i++) {
+        c[i].classList = ''
+      }
     }
   }
 }
@@ -90,9 +96,9 @@ export default {
     }
   }
   .reset {
-    margin: 10vh auto 0;
     width: 150px;
     height: 40px;
+    line-height: 40px;
     border: 1px solid rgb(80, 220, 140);
     font-size: 1.4em;
     border-radius: 20%;
@@ -101,12 +107,14 @@ export default {
     align-items: center;
     &:hover {
       background: rgb(80, 220, 140);
+      cursor: pointer;
       & a {
         color: #000;
       }
     }
     a {
     color: rgb(80, 220, 140);
+    text-align: center;
     text-decoration: none;
     }
   }

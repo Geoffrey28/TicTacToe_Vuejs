@@ -47,6 +47,9 @@ export default {
       window.setTimeout(() => {
         const c = document.querySelectorAll('.board li')
         let tgt = c[Math.floor(Math.random() * c.length)]
+        while (tgt.innerHTML !== '') {
+            tgt = c[Math.floor(Math.random() * c.length)]
+        }
         tgt.innerHTML = '<p>O</p>'
         tgt.classList.add('circle')
         this.turn++
