@@ -7,13 +7,13 @@
 
 <script>
 export default {
-    name: 'EndGame',
-    props: {
-        winner: {
-            type: String,
-            required: true
-        }
+  name: 'EndGame',
+  props: {
+    winner: {
+      type: String,
+      required: true
     }
+  }
 }
 </script>
 
@@ -24,17 +24,15 @@ export default {
     text-align: center;
     color: rgb(80, 220, 140);
     font-size: 3em;
-    animation: text_anim 1.5s cubic-bezier(.61,1.17,.82,.95);
+    animation: mounted_anim 1.5s cubic-bezier(.61,1.17,.82,.95);
     & p:first-of-type {
         margin-top: 20vh;
     }
 }
 
-@keyframes text_anim {
+@keyframes mounted_anim {
     0% {
         font-size: 0;
     }
 }
 </style>
-
-

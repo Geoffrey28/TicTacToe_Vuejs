@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-Vue.use(Router)
-
 // Views
 import Home from './views/Home.vue'
 import Game from './views/Game.vue'
@@ -10,6 +8,8 @@ import Game from './views/Game.vue'
 // Components
 import Board from './components/Board'
 import EndGame from './components/EndGame'
+
+Vue.use(Router)
 
 export default new Router({
   routes: [

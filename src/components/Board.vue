@@ -7,7 +7,7 @@
         <li></li>
         <li></li>
         <li></li>
-        
+
         <li></li>
         <li></li>
         <li></li>
@@ -15,76 +15,73 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
 export default {
-    name: 'Board',
-    props: {
-        mode: String
-    },
-    data () {
-        return {
-            turn: 1,
-            winner: null
-        }
-    },
-    methods: {
-        drawMarker (state) {
-            console.log(this.mode)
-            if (window.event.target.innerHTML === '') {
-                if (this.turn % 2 != 0) {
-                    window.event.target.innerHTML = '<p>X</p>'
-                    window.event.target.classList.add('cross')
-                    if (this.mode == 'solo') {
-                        this.autoPlay()
-                    }
-                } else {
-                    window.event.target.innerHTML = '<p>O</p>'
-                    window.event.target.classList.add('circle')
-                }
-                this.turn++
-            }
-        },
-        autoPlay() {
-            window.setTimeout( () => {
-                const c = document.querySelectorAll('.board li')
-                let tgt = c[Math.floor(Math.random() * c.length)]
-                tgt.innerHTML = '<p>O</p>'
-                tgt.classList.add('circle')
-                this.turn++
-            }, 500)
-        },
-        checkCombo () {
-            const c = document.querySelectorAll('li')
-            if ((c[0].className === c[1].className && c[1].className === c[2].className && c[0].classList.length === 1) ||
-               (c[3].className === c[4].className && c[4].className === c[5].className && c[3].classList.length === 1) ||
-               (c[6].className === c[7].className && c[7].className === c[8].className && c[6].classList.length === 1)) {
-                this.winner = window.event.target.className
-                this.getWin()
-            }
-            if ((c[0].className === c[3].className && c[3].className === c[6].className && c[0].classList.length === 1) ||
-               (c[1].className === c[4].className && c[4].className === c[7].className && c[1].classList.length === 1) ||
-               (c[2].className === c[5].className && c[5].className === c[8].className && c[2].classList.length === 1)) {
-                this.winner = window.event.target.className
-                this.getWin()
-            }
-            if ((c[0].className === c[4].className && c[4].className === c[8].className && c[0].classList.length === 1) ||
-               (c[2].className === c[4].className && c[4].className === c[6].className && c[2].classList.length === 1)) {
-                this.winner = window.event.target.className
-                this.getWin()
-            }
-        },
-        getWin () {
-            window.setTimeout( () => {
-                if (this.winner !== null) {
-                    // console.log('winner is : ' + this.winner)
-                    this.$emit('win', this.winner)
-                }
-            }, 1000)
-        }
+  name: 'Board',
+  props: {
+    mode: String
+  },
+  data () {
+    return {
+      turn: 1,
+      winner: null
     }
+  },
+  methods: {
+    drawMarker (state) {
+      console.log(this.mode)
+      if (window.event.target.innerHTML === '') {
+        if (this.turn % 2 !== 0) {
+          window.event.target.innerHTML = '<p>X</p>'
+          window.event.target.classList.add('cross')
+          if (this.mode === 'solo') {
+            this.autoPlay()
+          }
+        } else {
+          window.event.target.innerHTML = '<p>O</p>'
+          window.event.target.classList.add('circle')
+        }
+        this.turn++
+      }
+    },
+    autoPlay () {
+      window.setTimeout(() => {
+        const c = document.querySelectorAll('.board li')
+        let tgt = c[Math.floor(Math.random() * c.length)]
+        tgt.innerHTML = '<p>O</p>'
+        tgt.classList.add('circle')
+        this.turn++
+      }, 500)
+    },
+    checkCombo () {
+      const c = document.querySelectorAll('li')
+      if ((c[0].className === c[1].className && c[1].className === c[2].className && c[0].classList.length === 1) ||
+            (c[3].className === c[4].className && c[4].className === c[5].className && c[3].classList.length === 1) ||
+            (c[6].className === c[7].className && c[7].className === c[8].className && c[6].classList.length === 1)) {
+        this.winner = window.event.target.className
+        this.getWin()
+      }
+      if ((c[0].className === c[3].className && c[3].className === c[6].className && c[0].classList.length === 1) ||
+            (c[1].className === c[4].className && c[4].className === c[7].className && c[1].classList.length === 1) ||
+            (c[2].className === c[5].className && c[5].className === c[8].className && c[2].classList.length === 1)) {
+        this.winner = window.event.target.className
+        this.getWin()
+      }
+      if ((c[0].className === c[4].className && c[4].className === c[8].className && c[0].classList.length === 1) ||
+            (c[2].className === c[4].className && c[4].className === c[6].className && c[2].classList.length === 1)) {
+        this.winner = window.event.target.className
+        this.getWin()
+      }
+    },
+    getWin () {
+      window.setTimeout(() => {
+        if (this.winner !== null) {
+          this.$emit('win', this.winner)
+        }
+      }, 1000)
+    }
+  }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .board {
@@ -134,4 +131,3 @@ export default {
     }
 }
 </style>
-

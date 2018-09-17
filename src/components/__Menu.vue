@@ -22,7 +22,7 @@ export default {
       this.mode = mode
     }
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.$emit('setMode', this.mode)
   }
 }

@@ -31,7 +31,7 @@ export default {
       this.mode = mode
     }
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.$emit('setMode', this.mode)
   }
 }
@@ -53,7 +53,7 @@ export default {
       text-shadow: 2px 2px 10px rgb(80, 220, 140);
       letter-spacing: .2em;
     }
-  } 
+  }
 }
 .menu {
     width: 300px;
@@ -85,5 +85,3 @@ export default {
     }
 }
 </style>
-
-
