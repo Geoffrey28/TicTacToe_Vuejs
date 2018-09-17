@@ -45,10 +45,13 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  position: relative;
+  z-index: 10;
   &--head {
     width: 100%;
     text-align: center;
     color: rgb(80, 220, 140);
+    margin: 10vh 0;
     & h1 {
       text-shadow: 2px 2px 10px rgb(80, 220, 140);
       letter-spacing: .2em;

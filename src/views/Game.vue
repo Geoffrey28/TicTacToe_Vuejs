@@ -15,6 +15,9 @@
         <div class="reset" @click="resetBoard()">
           <router-link to="/game">Reset</router-link>
         </div>
+        <div class="wtf" v-show="this.winner === ''">
+          <p>???</p>
+        </div>
       </div>
       <router-view v-on:win="getScore" :mode="mode" :winner="winner"></router-view>
   </div>
@@ -55,6 +58,7 @@ export default {
       const c = document.querySelectorAll('.board li')
       for (let i = 0; i < c.length; i++) {
         c[i].classList = ''
+        this.winner = ''
       }
     }
   }
@@ -68,6 +72,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 10;
   &--player {
     margin-right: 250px;
     &--item {
@@ -95,16 +101,19 @@ export default {
       color: rgb(80, 220, 140);
     }
   }
-  .reset {
+  .reset, .wtf {
     width: 150px;
     height: 40px;
     line-height: 40px;
-    border: 1px solid rgb(80, 220, 140);
-    font-size: 1.4em;
     border-radius: 20%;
+    font-size: 1.4em;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px auto 0 auto;
+  }
+  .reset {
+    border: 1px solid rgb(80, 220, 140);
     &:hover {
       background: rgb(80, 220, 140);
       cursor: pointer;
@@ -116,6 +125,18 @@ export default {
     color: rgb(80, 220, 140);
     text-align: center;
     text-decoration: none;
+    }
+  }
+  .wtf {
+    background: rgb(80, 220, 140);
+    text-align: center;
+    &:hover {
+      background: none;
+      border: 1px solid rgb(80, 220, 140);
+      cursor: pointer;
+      p {
+        color: rgb(80, 220, 140);
+      }
     }
   }
 }
