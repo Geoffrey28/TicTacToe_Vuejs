@@ -18,26 +18,40 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'Board',
-    props: ['win', 'score'],
+    props: {
+        mode: String
+    },
     data () {
         return {
-            started: false,
             turn: 1,
             winner: null
         }
     },
     methods: {
         drawMarker (state) {
+            console.log(this.mode)
             if (window.event.target.innerHTML === '') {
                 if (this.turn % 2 != 0) {
                     window.event.target.innerHTML = '<p>X</p>'
                     window.event.target.classList.add('cross')
+                    if (this.mode == 'solo') {
+                        this.autoPlay()
+                    }
                 } else {
                     window.event.target.innerHTML = '<p>O</p>'
                     window.event.target.classList.add('circle')
                 }
                 this.turn++
             }
+        },
+        autoPlay() {
+            window.setTimeout( () => {
+                const c = document.querySelectorAll('.board li')
+                let tgt = c[Math.floor(Math.random() * c.length)]
+                tgt.innerHTML = '<p>O</p>'
+                tgt.classList.add('circle')
+                this.turn++
+            }, 500)
         },
         checkCombo () {
             const c = document.querySelectorAll('li')
@@ -62,7 +76,7 @@ export default {
         getWin () {
             window.setTimeout( () => {
                 if (this.winner !== null) {
-                    console.log('winner is : ' + this.winner)
+                    // console.log('winner is : ' + this.winner)
                     this.$emit('win', this.winner)
                 }
             }, 1000)

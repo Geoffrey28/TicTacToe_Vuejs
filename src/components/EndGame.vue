@@ -8,10 +8,10 @@
 <script>
 export default {
     name: 'EndGame',
-    props: ['winner'],
-    data () {
-        return {
-            
+    props: {
+        winner: {
+            type: String,
+            required: true
         }
     }
 }

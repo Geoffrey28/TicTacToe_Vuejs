@@ -5,18 +5,18 @@
           <router-link to="/">Go Back</router-link>
         </div>
         <div class="game--player--item">
-          <p>Player 1</p>
+          <p>Player 1 [X]</p>
           <p class="score">{{ this.score.one }}</p>
         </div>
         <div class="game--player--item">
-          <p>Player 2</p>
+          <p>Player 2 [O]</p>
           <p class="score">{{ this.score.two }}</p>
         </div>
-        <div class="reset" v-show="this.win">
+        <div class="reset">
           <router-link to="/game">Reset</router-link>
         </div>
       </div>
-      <router-view v-on:win="getScore"></router-view>
+      <router-view v-on:win="getScore" :mode="mode" :winner="winner"></router-view>
   </div>
 </template>
 
@@ -24,6 +24,9 @@
 import Board from '@/components/Board'
 export default {
   name: 'home',
+  props: {
+    mode: String
+  },
   components: {
     'Board': Board
   },
@@ -33,32 +36,26 @@ export default {
         one: 0,
         two: 0
       },
-      win: false,
       winner: ''
     }
   },
   methods: {
     getScore (winner) {
-      if (winner == 'cross') {
+      if (winner === 'cross') {
         this.score.one++
         this.winner = winner
       }
-      if (winner == 'circle') {
+      if (winner === 'circle') {
         this.score.two++
         this.winner = winner
       }
       this.$router.push('/end')
-      this.win = true
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-// $color1: #333;
-// $color3: #666;
-// $color2: #999;
-
 .game {
   width: 100vw;
   height: 100vh;
@@ -83,6 +80,8 @@ export default {
     &:hover {
       a {
         text-shadow: 2px 2px 5px rgb(80, 220, 140);
+        width: 100%;
+        height: 100%;
       }
     }
     a {

@@ -1,17 +1,30 @@
 <template>
     <div class="menu">
         <div class="menu--button">
-            <router-link to="/Game">Solo</router-link>
+            <router-link to="/Game" @click.native="setMode('solo')">Solo</router-link>
         </div>
         <div class="menu--button">
-            <router-link to="/game">Multijoueurs</router-link>
+            <router-link to="/game" @click.native="setMode('multi')">1 vs 1</router-link>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Menu'
+  name: 'Menu',
+  data () {
+    return {
+      mode: null
+    }
+  },
+  methods: {
+    setMode (mode) {
+      this.mode = mode
+    }
+  },
+  beforeDestroy() {
+    this.$emit('setMode', this.mode)
+  }
 }
 </script>
 
@@ -46,4 +59,3 @@ export default {
     }
 }
 </style>
-

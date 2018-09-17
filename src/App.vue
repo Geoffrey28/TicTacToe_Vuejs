@@ -1,8 +1,24 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view v-on:setMode="setMode" :mode="mode"></router-view>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'app',
+  data () {
+    return {
+      mode: null
+    }
+  },
+  methods: {
+    setMode (mode) {
+      this.mode = mode
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 body {
