@@ -26,6 +26,11 @@ export default {
       winner: null
     }
   },
+  mounted () {
+    if (this.mode === 'solo') {
+      this.autoPlay()
+    }
+  },
   methods: {
     drawMarker (state) {
       console.log(this.mode)
@@ -33,12 +38,12 @@ export default {
         if (this.turn % 2 !== 0) {
           window.event.target.innerHTML = '<p>X</p>'
           window.event.target.classList.add('cross')
-          if (this.mode === 'solo') {
-            this.autoPlay()
-          }
         } else {
           window.event.target.innerHTML = '<p>O</p>'
           window.event.target.classList.add('circle')
+          if (this.mode === 'solo') {
+            this.autoPlay()
+          }
         }
         this.turn++
       }
@@ -48,12 +53,12 @@ export default {
         const c = document.querySelectorAll('.board li')
         let tgt = c[Math.floor(Math.random() * c.length)]
         while (tgt.innerHTML !== '') {
-            tgt = c[Math.floor(Math.random() * c.length)]
+          tgt = c[Math.floor(Math.random() * c.length)]
         }
         tgt.innerHTML = '<p>O</p>'
         tgt.classList.add('circle')
         this.turn++
-      }, 500)
+      }, 1000)
     },
     checkCombo () {
       const c = document.querySelectorAll('li')
@@ -124,7 +129,7 @@ export default {
       height: 26%;
       border: none;
       background: rgb(80, 220, 140);
-      animation: wtf_anim 2s alternate infinite
+      animation: wtf_anim 3s alternate infinite
     }
 }
 
