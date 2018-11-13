@@ -41,16 +41,17 @@ export default {
     },
     resetBoard () {
       const c = document.querySelectorAll('.board li')
-      for (let i = 0; i < c.length; i++) {
-        c[i].classList = ''
-        this.winner = ''
-        this.wtf_state = false
+      for (let a = 0; a < c.length; a++) {
+        c[a].classList = ''
       }
+      this.winner = ''
     },
     wtfMode () {
       const c = document.querySelectorAll('.board li')
+      this.resetBoard()
       for (let i = 0; i < c.length; i++) {
         c[i].classList = ''
+        c[i].textContent = ''
         if (this.wtf_state === false) {
           c[i].classList.add('wtfmode')
           if (i === c.length - 1) {

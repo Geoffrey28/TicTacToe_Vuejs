@@ -24,12 +24,12 @@ export default {
 .stars, .twinkling, .clouds {
     position: absolute;
     display: block;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    width:100%;
-    height:100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .stars {
@@ -37,15 +37,15 @@ export default {
     background: #000 url('https://image.ibb.co/mjnygo/stars.png') repeat top center;
 }
 
-.twinkling{
+.twinkling {
     z-index: 1;
-    background:transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
+    background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
     animation: move-twink 200s linear infinite;
 }
 
-.clouds{
+.clouds {
     z-index: 2;
-    background:transparent url('https://image.ibb.co/bT4N7T/clouds.png') repeat top center;
+    background: transparent url('https://image.ibb.co/bT4N7T/clouds.png') repeat top center;
     animation: move-clouds 200s linear infinite;
 }
 

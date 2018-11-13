@@ -16,7 +16,7 @@ export default {
   },
   data () {
     return {
-      mode: null
+      mode: 'multi'
     }
   },
   methods: {

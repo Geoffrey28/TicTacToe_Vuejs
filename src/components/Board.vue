@@ -26,24 +26,18 @@ export default {
       winner: null
     }
   },
-  mounted () {
-    if (this.mode === 'solo') {
-      this.autoPlay()
-    }
-  },
   methods: {
     drawMarker (state) {
-      console.log(this.mode)
       if (window.event.target.innerHTML === '') {
         if (this.turn % 2 !== 0) {
           window.event.target.innerHTML = '<p>X</p>'
           window.event.target.classList.add('cross')
-        } else {
-          window.event.target.innerHTML = '<p>O</p>'
-          window.event.target.classList.add('circle')
           if (this.mode === 'solo') {
             this.autoPlay()
           }
+        } else {
+          window.event.target.innerHTML = '<p>O</p>'
+          window.event.target.classList.add('circle')
         }
         this.turn++
       }
@@ -58,7 +52,7 @@ export default {
         tgt.innerHTML = '<p>O</p>'
         tgt.classList.add('circle')
         this.turn++
-      }, 1000)
+      }, 250)
     },
     checkCombo () {
       const c = document.querySelectorAll('li')
@@ -99,7 +93,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    animation: ca 3s cubic-bezier(.61,1.17,.82,.95);
+    animation: ca 1s cubic-bezier(.61,1.17,.82,.95);
     & li {
         width: 33.3%;
         height: 33.3%;
@@ -122,7 +116,7 @@ export default {
         font-size: 3em;
         font-weight: 300;
         color: rgb(80, 220, 140);
-        animation: ta 500ms cubic-bezier(.61,1.17,.82,.95);
+        animation: ta 300ms cubic-bezier(.61,1.17,.82,.95);
     }
     .wtfmode {
       width: 26%;
@@ -135,16 +129,16 @@ export default {
 
 @keyframes ca {
   0% {
-      height: 0;
-      width: 0;
-      opacity: 0
+    height: 0;
+    width: 0;
+    opacity: 0
   }
 }
 
 @keyframes ta {
   0% {
-      opacity: 0;
-      font-size: 0;
+    opacity: 0;
+    font-size: 0;
   }
 }
 
